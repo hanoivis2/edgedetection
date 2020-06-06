@@ -33,8 +33,13 @@ function draw(v,c,bc,cw,ch) {
         if( i%4 == 3 ) continue;        //giữ nguyên kênh alpha
         var xValue = (data[i - w*4 -4] + data[i - w*4]*2 + data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 + data[i + w*4 + 4]);
         var yValue = (data[i - 4 - w*4] + data[i - 4]*2 + data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 + data[i + 4 + w*4]);
-        
-        data[i] =  Math.sqrt(xValue**2 + yValue**2)
+        var value = Math.sqrt(xValue**2 + yValue**2);
+        if (value > 90) {
+            data[i] = 255;
+        }
+        else {
+            data[i] = 0;
+        }
     }
     
     c.putImageData(idata,0,0);
