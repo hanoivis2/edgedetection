@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', function(){
     var v = document.getElementById('v');
     var canvas = document.getElementById('c');
     var context = canvas.getContext('2d');
-    var back = document.createElement('canvas');
+    var back = document.createElement('canvas')
     var backcontext = back.getContext('2d');
-
+ 
     var cw,ch;
-
+ 
     v.addEventListener('play', function(){
         cw = v.clientWidth;
         ch = v.clientHeight;
@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function(){
         back.height = ch;
         draw(v,context,backcontext,cw,ch);
     },false);
-
+ 
 },false);
-
+ 
 function draw(v,c,bc,cw,ch) {
     if(v.paused || v.ended) return false;
     // First, draw it into the backing canvas
