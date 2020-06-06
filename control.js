@@ -34,7 +34,7 @@ function draw(v,c,bc,cw,ch) {
         var xValue = (data[i - w*4 -4] + data[i - w*4]*2 + data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 + data[i + w*4 + 4]);
         var yValue = (data[i - 4 - w*4] + data[i - 4]*2 + data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 + data[i + 4 + w*4]);
         
-        data[i] = 127 + 2*data[i] - xValue - yValue;
+        data[i] = 127 + xValue + yValue;
     }
     
     c.putImageData(idata,0,0);
