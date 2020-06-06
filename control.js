@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
         cw = v.clientWidth;
         ch = v.clientHeight;
         canvas.width = cw;
-        canvas.height = ch;
+        canvas.height = "300px";
         back.width = cw;
         back.height = ch;
         draw(v,context,backcontext,cw,ch);
