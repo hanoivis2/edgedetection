@@ -21,20 +21,22 @@ document.addEventListener('DOMContentLoaded', function(){
  
 function draw(v,c,bc,cw,ch) {
     if(v.paused || v.ended) return false;
-    // First, draw it into the backing canvas
+    
     bc.drawImage(v,0,0,cw,ch);
-    // Grab the pixel data from the backing canvas
-    var idata = bc.getImageData(0,0,cw,ch);
+    
+    var idata = bc.getImageData(0,0,cw,ch);            //mảng 1 chiều thông tin theo thứ tự R,G,B,A của từng điểm ảnh 
     var data = idata.data;
     var w = idata.width;
-    var limit = data.length
-    // Loop through the subpixels, convoluting each using an edge-detection matrix.
+    var limit = data.length                             //tổng số pixel của khung hình
+    
     for(var i = 0; i < limit; i++) {
-        if( i%4 == 3 ) continue;
-        data[i] = 127 + 2*data[i] - data[i + 4] - data[i + w*4];
+        if( i%4 == 3 ) continue;        //giữ nguyên kênh alpha
+        data[i] = 127 + 
+                    (data[i - w*4 -4] + data[i - w*4]*2 +data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 +data[i + w*4 + 4])
+                   + (data[i - 4 - w*4] + data[i - 4]*2 +data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 +data[i + 4 + w*4])
     }
-    // Draw the pixels onto the visible canvas
+    
     c.putImageData(idata,0,0);
-    // Start over!
+    
     setTimeout(draw,20,v,c,bc,cw,ch);
 }
