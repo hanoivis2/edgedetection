@@ -34,12 +34,7 @@ function draw(v,c,bc,cw,ch) {
         var xValue = (data[i - w*4 -4] + data[i - w*4]*2 + data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 + data[i + w*4 + 4]);
         var yValue = (data[i - 4 - w*4] + data[i - 4]*2 + data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 + data[i + 4 + w*4]);
         
-        if( xValue > 150 && yValue > 150) {
-            data[i] = data[i];
-        }
-        else {
-            data[i] = 127;
-        }
+        data[i] = 127 + 2*data[i] - xValue - yValue;
     }
     
     c.putImageData(idata,0,0);
