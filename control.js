@@ -35,10 +35,10 @@ function draw(v,c,bc,cw,ch) {
         var yValue = (data[i - 4 - w*4] + data[i - 4]*2 + data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 + data[i + 4 + w*4]);
         
         if( xValue > 150 && yValue > 150) {
-            data[i] = 255;
+            data[i] = data[i];
         }
         else {
-            data[i] = 0;
+            data[i] = 127;
         }
     }
     
