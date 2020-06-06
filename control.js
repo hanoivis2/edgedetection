@@ -31,9 +31,9 @@ function draw(v,c,bc,cw,ch) {
     
     for(var i = 0; i < limit; i++) {
         if( i%4 == 3 ) continue;        //giữ nguyên kênh alpha
-        data[i] = 127 + 
+        data[i] = 
                     (data[i - w*4 -4] + data[i - w*4]*2 +data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 +data[i + w*4 + 4])
-                   + (data[i - 4 - w*4] + data[i - 4]*2 +data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 +data[i + 4 + w*4])
+                   + (data[i - 4 - w*4] + data[i - 4]*2 +data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 +data[i + 4 + w*4]);
     }
     
     c.putImageData(idata,0,0);
