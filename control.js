@@ -34,11 +34,11 @@ function draw(v,c,bc,cw,ch) {
         var xValue = (data[i - w*4 -4] + data[i - w*4]*2 + data[i - w*4 + 4]) - (data[i + w*4 -4] + data[i + w*4]*2 + data[i + w*4 + 4]);
         var yValue = (data[i - 4 - w*4] + data[i - 4]*2 + data[i - 4 + w*4]) - (data[i + 4 - w*4] + data[i + 4]*2 + data[i + 4 + w*4]);
         
-        if( xValue < 5 || yValue < 5) {
-            data[i] = data[i];
+        if( xValue < 2 && yValue < 2) {
+            data[i] = 127;
         }
         else {
-            data[i] = 127;
+            data[i] = 0;
         }
     }
     
