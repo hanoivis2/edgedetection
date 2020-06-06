@@ -45,14 +45,16 @@
 	    
 
 
-	    for(var i = 0; i < limit; i++) {
+	    for(var i = 0; i < limit; i+=4) {
 
-	        if (i%4 == 3) {
-	        	data[i] = 255;
-	        }
-	        else {
-	        	data[i] = 127 + 2*data[i] - data[i+4] - data[i + w*4];
-	        }
+	    	var xKernel = (data[i-4-w*4] + 2*data[i-w*4] + data[i+4-w*4]) - (data[i-4+w*4] + 2*data[i+w*4] + data[i+4+w*4]);
+	    	var yKernel = (data[i-w*4-4] + 2*data[i-4] + data[i+w*4-4]) - (data[i-w*4+4] + 2*data[i+4] + data[i+w*4+4]);
+	    	var space = Math.sqrt(xKernel**2 + yKernel**2)>>>0;
+
+	        data[i] = space;
+	        data[i+1] = space;
+	        data[i+2] = space;
+	        data[i+3] = 255;
 	     
 	    }
 
